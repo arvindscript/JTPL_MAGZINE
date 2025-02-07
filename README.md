@@ -1,0 +1,1 @@
+# JTPL_MAGZINE
