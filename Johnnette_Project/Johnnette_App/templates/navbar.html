@@ -1,177 +1,492 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header | Johnnette-Technologies</title>
+    <meta name="keywords" content="drone website, mapping drone, fixed-wing drone, Unmanned Aerial Vehicle, surveillance, UAV, low cost, high quality">
+    <meta name="description" content="drone manufacturer, reliable and high quality drone at low cost, drone for military of defence">
+    <link rel="icon" href="img/logo/logo.webp ">
+
+
+    <!-- font awesome cdn link -->
+    <!-- fa5-$-css  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+
+    <style>
+     body {
+  background-image: url('/static/img/Magzine.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-}
+        @font-face {
+            font-family: "d-din";
+            src: url("fonts/D-DIN-Bold.otf");
+            src: url("fonts/D-DIN-Italic.otf");
+            src: url("fonts/D-DINExp.otf");
+            src: url("fonts/D-DINCondensed.otf");
+            src: url("fonts/D-DINCondensed-Bold.otf");
+            src: url("fonts/D-DINExp-Italic.otf");
+            src: url("fonts/D-DIN.otf");
+        } 
+        
+        * {
+            font-family: 'D-DIN', sans-serif;
+            font-family: d-din;
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            transition: all .5s linear;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+        }
+        
+        header {
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        
+        .header {
+            /* transform: translateY(-100%); */
+            opacity: 0;
+        }
+        
+        .header.show {
+            /* transform: translateY(0); */
+            opacity: 1;
+        }
+        
+        .header_background {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            background-color: black;
+            transform: translateY(-100%);
+            opacity: 1;
+            /* clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); */
+        }
+        
+        .header_background.show_background {
+            transform: translateY(0);
+            /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
+        }
+        
+        .inner_header {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        #logo {
+            z-index: 50;
+            margin-top: 10px;
+            width: 350px;
+            text-align: center;
+        }
+        
+        #logo .logo {
+            display: inline;
+            text-align: center;
+        }
+        
+        #logo .logo img {
+            display: inline-block;
+            width: 25%;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-top: 25px;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            margin-left: -170px;
+            z-index: 51;
+            color:black;
+            /* background-color: rgb(161, 148, 173); */
+        }
+        
+        .navbar ul {
+            display: inline;
+        }
+        
+        .navbar ul li {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .navbar ul li a {
+            display: inline-block;
+            text-decoration: none;
+            font-family: d-din;
+            /* font-size: 15px; */
+            font-size: 16px;
+            color: white;
+            /* margin: .5rem 1rem; */
+            margin: .5rem 2rem;
+            border-radius: .5rem;
+            text-transform: uppercase;
+        }
+        
+        .navbar .nav_link {
+            position: relative;
+        }
+        
+        .navbar .nav_link::after {
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: white;
+            transform: scaleX(0);
+            transform-origin: right center;
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        .navbar .nav_link:hover:after {
+            transform: scaleX(1);
+            transform-origin: left center;
+        }
+        
+        .header .icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 50px;
+        }
+        
+        .header .icons .fab-icons {
+            display: inline-block;
+        }
+        
+        .header .icons #menu-bar {
+            font-size: 18px;
+            color: white;
+            z-index: 222223;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            padding-top: 13px;
+        }
+        /* -------------------right navigation------------------------------------ */
+        
+        #other-informations {
+            height: 150vh;
+            /* width: 280px; */
+            width: 310px;
+            position: absolute;
+            top: 0;
+            right: -20px;
+            background-color: black;
+            padding: 0 50px;
+            z-index: 200;
+            clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+            overflow-y: scroll;
+            scrollbar-width: none;
+        }
+        
+        #other-informations.active {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        
+        .navbar2 {
+            display: block;
+            width: 200px;
+            padding-top: 80px;
+            padding-bottom: 50px;
+            float: right;
+            color: white;
+            text-align: right;
+            opacity: 0;
+        }
+        
+        .navbar2.active {
+            background: black;
+            opacity: 1;
+        }
+        
+        .navbar2 ul li {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding-bottom: 10px;
+            font-size: 15px;
+            border-bottom: .1px solid rgb(87, 86, 86);
+        }
+        
+        .navbar2 ul li a {
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            text-transform: uppercase;
+        }
+        
+        .fa-angle-double-down {
+            padding: 0 15px;
+        }
+        
+        .sub-menu-1 ul li {
+            border-bottom: .1px dashed rgb(87, 86, 86);
+        }
+        
+        .sub-menu-1 ul li a {
+            color: gray;
+            font-size: 14px;
+        }
+        
+        .sub-menu-1 ul li a:hover {
+            color: white;
+            transition: .3s;
+        }
+        /* ================-----------right navigation submenu----------================== */
+        
+        #sub-menu-1 {
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            position: absolute;
+            right: 50px;
+            opacity: 0;
+            transition: opacity .0s;
+        }
+        
+        #sub-menu-1.active {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            position: static;
+            opacity: 1;
+            transition: all .5s;
+        }
+        
+        #sub-menu-2 {
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            position: absolute;
+            right: 50px;
+            opacity: 0;
+            transition: opacity .0s;
+        }
+        
+        #sub-menu-2.active {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            position: static;
+            opacity: 1;
+            transition: all .5s;
+        }
+        
+        #sub-menu-3 {
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            position: absolute;
+            right: 50px;
+            opacity: 0;
+            transition: opacity .0s;
+        }
+        
+        #sub-menu-3.active {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            position: static;
+            opacity: 1;
+            transition: all .5s;
+        }
+        /* -------------------right navigation submenu end--------------------- */
+        /* header media queries */
+        
+        @media screen and (min-width: 1440px) {
+            header #logo .logo img {
+                width: 30%;
+            }
+            .navbar {
+                /* margin-left: -300px; */
+                margin-left: -200px;
+            }
+        }
+        
+        @media screen and (max-width: 1440px) and (min-width: 990px) {
+            header #logo {
+                width: 250px;
+            }
+            header #logo .logo img {
+                width: 35%;
+            }
+        }
+        
+        @media screen and (max-width: 1060px) {
+            .navbar {
+                margin-left: -100px;
+            }
+        }
+        
+        @media screen and (max-width: 1000px) {
+            html {
+                font-size: 50%;
+            }
+            header .icons {
+                margin-right: 50px;
+            }
+        }
+        
+        @media screen and (max-width: 860px) {
+            .navbar {
+                margin-left: -30px;
+            }
+            .header .icons {
+                margin-right: 30px;
+                padding-left: 20px;
+            }
+        }
+        
+        @media screen and (max-width: 990px) and (min-width: 768px) {
+            #logo {
+                width: 150px;
+            }
+            #logo .logo img {
+                display: inline-block;
+                width: 60%;
+            }
+        }
+        
+        @media screen and (max-width: 768px) and (min-width: 400px) {
+            header #logo {
+                width: 150px;
+            }
+            header #logo .logo img {
+                width: 60%;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            header .navbar {
+                display: none;
+            }
+            .header .icons {
+                margin-right: 30px;
+            }
+        }
+        
+        @media screen and (max-width: 450px) {
+            #other-informations {
+                width: 280px;
+            }
+            .header .icons {
+                margin-right: 30px;
+            }
+        }
+        
+        @media screen and (max-width: 400px) and (min-width: 100px) {
+            #logo .logo img {
+                display: inline-block;
+                width: 60%;
+            }
+            #logo {
+                width: 130px;
+            }
+            .header .icons {
+                margin-right: 30px;
+            }
+        }
+        /* header media queries end */
+    </style>
 
-.topnav a {
-  color: #f2f2f2;
-  text-align: center;
-  padding: 10px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Search bar styling */
-.search-container {
-  display: flex;
-  align-items: center;
-}
-
-.search-container input {
-  padding: 6px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.search-container button {
-  background: #ddd;
-  border: none;
-  padding: 6px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.search-container button:hover {
-  background: #bbb;
-}
-
-/* Three-dot (hamburger) menu */
-.menu-icon {
-  display: none;
-  cursor: pointer;
-  font-size: 24px;
-  color: white;
-  padding: 10px;
-}
-
-@media screen and (max-width: 768px) {
-  .topnav a {
-    display: none;
-  }
-  .search-container {
-    display: none;
-  }
-  .menu-icon {
-    display: block;
-  }
-}
-
-/* Dropdown menu for small screens */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 50px;
-  right: 10px;
-  background-color: #333;
-  min-width: 150px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: white;
-}
-
-.dropdown-content a:hover {
-  background-color: #555;
-}
-
-.show {
-  display: block;
-}
-.container {
-  display: inline-block;
-  cursor: pointer;
-}
-
-.bar1, .bar2, .bar3 {
-  width: 35px;
-  height: 5px;
-  background-color:white;
-  margin: 6px 0;
-  transition: 0.4s;
-}
-
-.change .bar1 {
-  transform: translate(0, 11px) rotate(-45deg);
-}
-
-.change .bar2 {opacity: 0;}
-
-.change .bar3 {
-  transform: translate(0, -11px) rotate(45deg);
-}
-</style>
 </head>
-<body>
 
-<div class="topnav">
-  <a href="#home">Home</a>
-  <a href="#news">About</a>
-  <a href="">Article Volume 1</a>
-  <a href="">Article Volume 2</a>
-  <a href="#about" class="split">Help</a>
+<body style="background-color: rgb(245, 144, 144);">
 
-  <!-- Search Bar -->
-  <div class="search-container">
-    <input type="text" placeholder="Search..">
-    <button>Search</button>
-  </div>
-  <div class="container" onclick="myFunction(this)">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-  </div>
-  <!-- Three-dot (Hamburger) Menu -->
-  <div class="menu-icon" onclick="toggleMenu()">☰</div>
-</div>
+    <header class="header show">
+        <div class="header_background"></div>
+        <div class="inner_header">
+            <div id="logo">
 
-<!-- Dropdown Menu -->
-<div id="dropdownMenu" class="dropdown-content">
-  <a href="#home">Home</a>
-  <a href="#news">About</a>
-  <a href="">Article Volume 1</a>
-  <a href="">Article Volume 2</a>
-  <a href="#about">Help</a>
-</div>
+            </div>
+            <nav id="navbar1" class="navbar">
+                <ul>
+                    <li><a class="nav_link" href="Home.html">Home</a></li>
+                    <li><a class="nav_link" href="About.html">About</a></li>
+                    <li><a class="nav_link" href="Articles Volume 1.html">Article Volume 1</a></li>
+                    <li><a class="nav_link" href="Articles Volume 2.html">Article Volume 2</a></li>
+                    <!-- <li><a class="nav_link" href="training.html">Training</a></li> -->
+                    <!-- <li><a class="nav_link" href="JVM-100.html">JVM-100</a></li>
+                    <li><a class="nav_link" href="JOBOT.html">JOBOT</a></li> -->
+                </ul>
+            </nav>
+            <div class="icons">
+                <!-- <li style=" margin-top: 13px; margin-right: 30px; z-index: 100; list-style: none;"><a class="nav_link" href="https://www.johnnettestore.com" style="color: white; font-size: 15px;" target="_blank">SHOP</a></li> -->
+                <i class="fas fa-bars" style="width: 10px;" id="menu-bar"></i>
+            </div>
+        </div>
+        <div id="other-informations">
+            <nav class="navbar2">
+                <ul>
+                    
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="Article1.html">Article Volume 1</a></li>
+                    <li><a href="Article2.html">Article Volume 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="img">
+          <img src="static/img/Magzine1.jpg" alt="Magazine Image" class="sr">
+        </div>
+    </header>
 
-<div style="padding-left:16px">
-  <h2>Welcome</h2>
-  <p>The "Help" link in the navigation bar is separated from the rest of the navigation links.</p>
-</div>
 
-<script>
-function toggleMenu() {
-  var menu = document.getElementById("dropdownMenu");
-  menu.classList.toggle("show");
-}
-function myFunction(x) {
-  x.classList.toggle("change");
-}
-</script>
+
+    <script>
+        let menu = document.querySelector("#menu-bar");
+        let navbar = document.querySelector('.navbar2');
+        let other = document.querySelector("#other-informations")
+        let icons = document.querySelector('.fab-icons')
+
+        menu.onclick = () => {
+            menu.classList.toggle('fa-times')
+            navbar.classList.toggle('active')
+            other.classList.toggle('active')
+            icons.classList.toggle('active')
+        }
+
+
+        let prevScrollPos = window.pageYOffset
+        const header = document.querySelector(".header")
+        const background = document.querySelector(".header_background")
+        const show = "show"
+        const with_background = "show_background"
+        window.onscroll = () => {
+            const currentScrollPos = window.pageYOffset
+            const halfScreenHeight = Math.floor(window.innerHeight / 2)
+
+            menu.classList.remove('fa-times')
+            navbar.classList.remove('active')
+            other.classList.remove('active')
+
+            if (currentScrollPos > halfScreenHeight) {
+                background.classList.add(with_background)
+            } else {
+                background.classList.remove(with_background)
+            }
+
+            if (currentScrollPos > prevScrollPos) {
+                header.classList.remove(show)
+                console.log('scolling down')
+            } else {
+                header.classList.add(show)
+                console.log("scolling up")
+            }
+            prevScrollPos = currentScrollPos
+        }
+    </script>
 
 </body>
+
 </html>
